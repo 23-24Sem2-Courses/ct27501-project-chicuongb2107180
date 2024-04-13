@@ -1,0 +1,133 @@
+:root {
+  --hight-header: 63px;
+  /*color*/
+  --color_in: #a2b2c3;
+  --color-primary: #8e9fb8;
+  --color-secondary: #e8e9ee;
+  --color-success: #28a745;
+  --color-info: #17a2b8;
+  --color-warning: #ffc107;
+  --color-danger: #dc3545;
+  --color-light: #e7eaee;
+  --color-dark: #343a40;
+  --color-white: #fff;
+  --color-black: #000;
+  --while-text: #fff;
+  /*font */
+  --font-family: "Mulish", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*html {
+  font-size: 62.5%;
+}
+body {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+a[href] {
+  text-decoration: none;
+  color: var(--color-dark);
+}
+/*font */
+@font-face {
+  font-family: "Mulish";
+  src: url(public\fonts\Mulish-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Mulish";
+  src: url(public\fonts\Mulish-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Mulish";
+  src: url(public\fonts\Mulish-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Mulish";
+  src: url(public\fonts\Mulish-Bold.ttf);
+  font-weight: 700;
+}
+input[type] {
+	outline: none;
+}
+
+input[name], input[type], textarea[name], select[name], option {
+	font-size: 1rem;
+}
+button[type] {
+  font-size: 1rem ;
+}
+.bg-color-primary {
+  background-color: var(--color-primary);
+}
+/*Button*/
+.btn-outline-primary,
+.btn-fill-primary {
+  min-width: 50px;
+  font-size: 1rem;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 5px 45px;
+}
+.btn-outline-primary {
+  color: var(--color-primary);
+}
+.btn-outline-primary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+.btn-outline-primary:active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  filter: brightness(85%);
+}
+.btn-fill-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.btn-fill-primary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+.btn-fill-primary:active {
+  background-color: var(--color-primary);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  filter: brightness(85%);
+}
+/*pagination*/
+nav[arial-label="Page navigation"].pagination {
+  font-size: 1rem;
+}
+/* active pagination */
+.page-link.active-status {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+/* color heading */
+.color-heading {
+  color: var(--color-primary);
+}
+/*error*/
+.error {
+  color: var(--color-danger);
+  font-size: 0.9rem;
+  text-align: left;
+  font-style: italic;
+}
+ul {
+  list-style-type: none;
+}
