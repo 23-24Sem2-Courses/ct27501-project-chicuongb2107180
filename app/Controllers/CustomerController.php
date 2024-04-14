@@ -143,7 +143,7 @@ class CustomerController
             ]);
         } else {
             Helper::redirectTo('/profile', [
-                'status' => 'error',
+                'status' => 'danger',
                 'message' => 'Mật khẩu cũ không đúng'
             ]);
         }

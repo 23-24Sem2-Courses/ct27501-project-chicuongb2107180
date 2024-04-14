@@ -7,7 +7,7 @@ require_once __DIR__ . '/../partials/header.php' ?>
   <div class="sidebar col-md-2" style="margin:8px 0px 0px 0px">
     <!--danh mục sản phẩm-->
     <div class="category p-2 me-2 shadow rounded-2 bg-white">
-      <div class="text-center"><strong> Sản phẩm</strong></div>
+    <h4 class="text-center text-secondary"><strong> Sản phẩm</strong></h2>
       <ul>
         <?php foreach ($categories as $category) : ?>
           <li><a href="/home/category/<?php echo Helper::htmlEscape($category['category_id']) ?>"><span><?php echo Helper::htmlEscape($category['category_name']) ?></span></a></li>
