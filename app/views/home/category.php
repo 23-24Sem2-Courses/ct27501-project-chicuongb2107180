@@ -7,15 +7,17 @@ use App\utils\Helper;
     <div class="sidebar col-md-2" style="margin:8px 0px 0px 0px">
         <!--danh mục sản phẩm-->
         <div class="category p-2 me-2 shadow rounded-2 bg-white">
-            <div class="text-center"><strong> Sản phẩm</strong></div>
-            <ul>
-                <?php foreach ($categories as $category) : ?>
-                    <li><a href="/home/category/<?php echo Helper::htmlEscape($category['category_id']) ?> 
-                    " <?php if ($category_id == $category['category_id']) : ?> class="active" <?php endif ?>>
-                            <span><?php echo Helper::htmlEscape($category['category_name']) ?></span>
-                        </a></li>
-                <?php endforeach ?>
-            </ul>
+            <h4 class="text-center text-secondary"><strong> Sản phẩm</strong></h2>
+                <ul>
+
+                    <?php foreach ($categories as $category) :  ?>
+                        <li class="<?= ((int)$category_id == $category['category_id']) ? 'fw-bold' : '' ?>">
+                            <a href="/home/category/<?php echo Helper::htmlEscape($category['category_id']) ?>">
+                                <span><?php echo Helper::htmlEscape($category['category_name']) ?></span>
+                            </a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
         </div>
     </div>
     <div class="col-md-10" style="padding:0px">
@@ -73,25 +75,22 @@ use App\utils\Helper;
 
         <!--pagination-->
         <div class="d-flex justify-content-center" style="margin: 10px;">
-            <nav aria-label="Page navigation example">
+            <nav class="d-flex justify-content-center">
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
+                    <li class="page-item<?= $paginator->getPrevPage() ? '' : ' disabled' ?>">
+                        <a role="button" href="/home/category/<?= Helper::htmlEscape($category_id) ?>?page=<?= $paginator->getPrevPage() ?>&limit=8" class="page-link">
+                            <span>&laquo;</span>
                         </a>
                     </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
+                    <?php foreach ($pages as $page) : ?>
+                        <li class="page-item <?= $paginator->getCurrPage() === $page ? 'active' : '' ?>">
+                            <a role="button" href="/home/category/<?= Helper::htmlEscape($category_id) ?>?page=<?= $page ?>&limit=8" class="page-link"><?= $page ?></a>
+                        </li>
+                    <?php endforeach ?>
+
+                    <li class="page-item<?= $paginator->getNextPage() ? '' : ' disabled' ?>">
+                        <a role="button" class="page-link" href="/home/category/<?= Helper::htmlEscape($category_id) ?>?page=<?= $paginator->getNextPage() ?>&limit=8">
+                            <span>&raquo;</span>
                         </a>
                     </li>
                 </ul>

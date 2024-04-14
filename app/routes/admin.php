@@ -32,8 +32,8 @@ $router->get(
     'App\Controllers\AdminController@order'
 );
 $router->post(
-    '/admin/order/edit/(\d+)',
-    'App\Controllers\AdminController@editOrder'
+    '/admin/order/approve',
+    'App\Controllers\AdminController@approveOrder'
 );
 $router->post(
     '/admin/order/delete/(\d+)',

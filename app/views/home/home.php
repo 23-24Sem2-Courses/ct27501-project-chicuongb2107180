@@ -91,28 +91,24 @@ require_once __DIR__ . '/../partials/header.php' ?>
       </div>
     </div>
   </div>
-
   <!--pagination-->
   <div class="d-flex justify-content-center" style="margin: 10px;">
-    <nav aria-label="Page navigation example">
+    <nav class="d-flex justify-content-center">
       <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
+        <li class="page-item<?= $paginator->getPrevPage() ? '' : ' disabled' ?>">
+          <a role="button" href="/?page=<?= $paginator->getPrevPage() ?>&limit=8" class="page-link">
+            <span>&laquo;</span>
           </a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
+        <?php foreach ($pages as $page) : ?>
+          <li class="page-item <?= $paginator->getCurrPage() === $page ? 'active' : '' ?>">
+            <a role="button" href="/?page=<?= $page ?>&limit=8" class="page-link"><?= $page ?></a>
+          </li>
+        <?php endforeach ?>
+
+        <li class="page-item<?= $paginator->getNextPage() ? '' : ' disabled' ?>">
+          <a role="button" class="page-link" href="/?page=<?= $paginator->getNextPage() ?>&limit=8">
+            <span>&raquo;</span>
           </a>
         </li>
       </ul>

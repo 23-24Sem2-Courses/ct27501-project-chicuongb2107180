@@ -1,101 +1,104 @@
 /*header*/
 .header {
-    height: var(--hight-header);
-    background-color: var(--color-primary);
-    width: 100%;
+  height: var(--hight-header);
+  background-color: var(--color-primary);
+  width: 100%;
 }
-.logo-shop-icon{
-    font-size :3rem
+.logo-shop-icon {
+  font-size: 3rem;
 }
-.logo-shop-name{
-    font-size: 2.2rem;
+.logo-shop-name {
+  font-size: 2.2rem;
 }
 #cart {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 #cart:hover {
-    cursor: pointer;
-    filter: brightness(85%);
+  cursor: pointer;
+  filter: brightness(85%);
 }
 #cart .cart-count {
-    top: 0;
-    left: 62%;
-    padding: 0.5px 4px;
-    font-size: 1.2rem;
+  top: 0;
+  left: 62%;
+  padding: 0.5px 4px;
+  font-size: 1.2rem;
 }
 /*optional account*/
 .option-account {
-    top: 28px;
-    min-width: 154px;
-    display: none;
+  top: 28px;
+  min-width: 154px;
+  display: none;
 }
 
-.option-account a:hover{
-    background-color: var(--color-primary);
+.option-account a:hover {
+  background-color: var(--color-primary);
 }
-.logined-account:hover .option-account{
-    display: block;
+.logined-account:hover .option-account {
+  display: block;
 }
-.account, a{
-    color: var(--color-white);
+.account,
+a {
+  color: var(--color-white);
 }
 /* search bar */
-.search-btn:hover{
-    background-color: var(--hover-bg-color);
+.search-btn:hover {
+  background-color: var(--hover-bg-color);
 }
 /*account section*/
 #sign-up::before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 2px;
-    height: 14px;
-    margin-top: 4px;
+  content: "";
+  position: absolute;
+  display: block;
+  width: 2px;
+  height: 14px;
+  margin-top: 4px;
 }
-#sign-in{
-    margin-left: 10px ;
+#sign-in {
+  margin-left: 10px;
+}
+#sign-in,
+#sign-up {
+  cursor: pointer;
+}
+#sign-in:hover,
+#sign-up:hover {
+  filter: brightness(60%);
+}
+.error {
+  color: red;
+  font-size: 1rem !important;
+}
+.ap {
+  padding: 0px;
+}
 
+.sidebar {
+  background-color: #fff;
 }
-#sign-in, #sign-up{
-    cursor: pointer;
+.footer {
+  background-color: var(--color-primary);
+  padding: 20px 0px;
 }
-#sign-in:hover, #sign-up:hover{
-    filter:  brightness(60%);
+.card-text__price {
+  font-size: 1rem;
 }
-.error{
-    color: red;
-    font-size: 1rem !important;
+.card-text__sold {
+  padding-top: 3px;
+  font-size: 0.8rem;
+  font-weight: 200;
 }
-.ap{
-    padding: 0px;
+.card-body {
+  padding: 3px;
 }
-
-.sidebar{
-    background-color: #fff;
+.card-title {
+  margin-bottom: 3px;
+  font-size: 1.1rem;
 }
-.footer{
-    background-color: var(--color-primary);
-    padding: 20px 0px;
-}
-.card-text__price{
-    font-size: 1rem;
-}
-.card-text__sold{
-    padding-top: 3px;
-    font-size: 0.8rem;
-    font-weight: 200;
-}
-.card-body{
-    padding: 3px;
-}
-.card-title{
-    margin-bottom: 3px;
-    font-size: 1.1rem;
-}
-.all-product{
-    inline-size: 0.3rem;
+.all-product {
+  inline-size: 0.3rem;
 }
 .image-item:hover {
-    border: 2px solid #007bff;
+  border: 2px solid #007bff;
 }
+
 

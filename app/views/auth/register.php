@@ -1,9 +1,12 @@
-<?php require_once __DIR__ . '/../partials/header.php'; ?>
+<?php require_once __DIR__ . '/../partials/header.php';
+use App\utils\Helper;
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="d-flex justify-content-center align-items-center" style="min-height:100%">
                 <div class="bg-white shadow mx-5" style="min-width:600px;min-height:100%;border-radius:solid 3px; padding: 50px">
+                <p class="text-danger text-center bg-light bg-gradient"><?=Helper::getOnceFromSession('errors')?></p>
 
                     <h1 class="text-center">Đăng ký</h1>
                     <form action="/register/submit" method="post" id="signupForm">

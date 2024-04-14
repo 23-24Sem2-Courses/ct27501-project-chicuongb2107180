@@ -17,10 +17,6 @@ $router->get(
 	'/home/product/(\d+)',
 	'App\Controllers\HomeController@viewItem'
 );
-$router->post(
-	'/search/get-hint',
-	'App\Controllers\HomeController@getHint'
-);
 $router->get(
 	'/search',
 	'App\Controllers\HomeController@search'

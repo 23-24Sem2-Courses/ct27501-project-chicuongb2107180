@@ -40,10 +40,6 @@ class Helper
         return self::htmlEscape($value);
     }
 
-    static public function removeFromSession(string $key): void
-    {
-        unset($_SESSION[$key]);
-    }
 
     static public function getFormDataFromSession(string $key): string
     {
@@ -67,22 +63,15 @@ class Helper
     static public function getPrefixUrl(): string
     {
         $uri = explode('?', $_SERVER['REQUEST_URI'])[0];
-        return explode('/', $uri)[1];
+        return $uri;
     }
-
-    // format date from yyyy-mm-dd to dd-mm-yyyy
-    static public function formatDate(string $date): string
-    {
-        return date('d-m-Y', strtotime($date));
-    }
-
     static public function isLogged(): bool
     {
         return isset($_SESSION['auth']);
     }
-
-    static public function isPermitted(array $allowedTypes): bool
+    static public function formatDate(string $date): string
     {
-        return in_array($_SESSION['auth']['type'], $allowedTypes);
-    } 
+        return date('Y-m-d', strtotime($date));
+    }
 }
+

@@ -1,13 +1,17 @@
+
+
 <?php require_once __DIR__ . '/../partials/header.php';
+use App\utils\Helper;
 ?>
+
 <div class="container">
     <div class="row" style="min-height:460px">
         <div class="col-md-6 offset-md-3">
             <div class="d-flex justify-content-center align-items-center" style="min-height:100%">
                 <div class="bg-white shadow" style="min-width:600px;min-height:100%;border-radius:solid 3px; padding: 50px">
+                <p class="text-danger text-center bg-light bg-gradient"><?=Helper::getOnceFromSession('errors')?></p>
 
                     <h1 class="text-center">Đăng nhập</h1>
-                    <p class="text-danger"><?=$_SESSION['errors'] ?? ''?></p>
                     <form action="/login/submit" method="post">
                         <div class="form-group">
                             <label for="username">Tên đăng nhập</label>
@@ -28,14 +32,6 @@
         </div>
     </div>
 </div>
-<!-- khi nhấn submit hiện ra thông báo đăng nhập thành công hay thất bại -->
-<?php if (isset($message)) : ?>
-    <div class="alert alert-<? echo $status?>" role="alert">
-        <?= $message?>
-    </div>
-<?php endif; ?>
-
-
 
 
 <?php require_once __DIR__ . '/../partials/footer.php' ?>

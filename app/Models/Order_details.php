@@ -2,6 +2,7 @@
 namespace App\Models;
 use PDO;
 use App\Models\PDOFactory;
+use App\models\{Customer,Product};
 
 class Order_details{
     private ?PDO $db;
@@ -64,4 +65,19 @@ class Order_details{
         $stmt->execute([$data['order_id'], $data['product_id'], $data['quantity']]);
         return $this;
     }
+
+    ##get product by order_id
+    public function getProduct(): Product{
+        $sql = "SELECT * FROM products WHERE product_id = :product_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['product_id' => $this->product_id]);
+        $data = $stmt->fetch();
+        return (new Product($this->db))->fillFromDb($data);
+    }
+    #get Quantity
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+        
 }

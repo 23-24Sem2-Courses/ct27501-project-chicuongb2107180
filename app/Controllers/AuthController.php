@@ -9,7 +9,6 @@ use App\utils\{Helper, Validator};
 
 class AuthController
 {
-    private $rules;
 
     public function createlogin()
     {
@@ -24,25 +23,36 @@ class AuthController
         $customer = $Customer->login($data);
         if ($customer) {
             $username = $customer->getUsername();
-            $_SESSION['username'] = $username; 
-             Helper::redirectTo(
-                 '/',
-                 [
-                     [
-                         'status' => 'success',
-                         'message' => 'Đăng nhập thành công'
-                     ]
-                 ]
-             );
+            if($username == 'admin'){
+                $_SESSION['admin'] = $username;
+                Helper::redirectTo(
+                    '/admin/product',
+                    [
+                        
+                            'status' => 'success',
+                            'message' => 'Đăng nhập thành công'
+                        
+                    ]
+                );
+            }
+            $_SESSION['username'] = $username;
+            Helper::redirectTo(
+                '/',
+                [
+                    
+                        'status' => 'success',
+                        'message' => 'Đăng nhập thành công'
+                    
+                ]
+            );
         }
-         Helper::redirectTo('/login', [
-             [
-                 'form' => ['username' => $data['username'], 'password' => $data['password']],
-                 'errors' => 'Sai tên đăng nhập hoặc mật khẩu',
-                 'status' => 'danger',
-                 'message' => 'Đăng nhập thất bại'
-             ]
-         ]);
+        Helper::redirectTo('/login', [
+            
+                'errors' => 'Sai tên đăng nhập hoặc mật khẩu',
+                'status' => 'danger',
+                'message' => 'Đăng nhập thất bại'
+            
+        ]);
     }
     public function createregister()
     {
@@ -62,33 +72,33 @@ class AuthController
         $Customer->fill($data);
         if ($Customer->checkUsername()) {
             Helper::redirectTo('/register', [
-                [
-                    'form' => $data,
-                    'errors' => ['username' => 'Tên đăng nhập đã tồn tại'],
-                    'status' => 'danger',
-                    'message' => 'Đăng ký thất bại'
-                ]
+
+                'errors' => 'Tên đăng nhập đã tồn tại',
+                'status' => 'danger',
+                'message' => 'Đăng ký thất bại'
+
             ]);
             return;
         }
         $Customer->register();
         Helper::redirectTo('/login', [
-            [
-                'status' => 'success',
-                'message' => 'Đăng ký thành công'
-            ]
+
+            'status' => 'success',
+            'message' => 'Đăng ký thành công'
+
         ]);
     }
     public function logout()
     {
         unset($_SESSION['username']);
+        unset($_SESSION['cart']);
         Helper::redirectTo(
             '/',
             [
-                [
-                    'status' => 'success',
-                    'message' => 'Đăng xuất thành công'
-                ]
+
+                'status' => 'success',
+                'message' => 'Đăng xuất thành công'
+
             ]
         );
     }

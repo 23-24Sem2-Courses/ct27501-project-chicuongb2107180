@@ -22,7 +22,7 @@ $router->post(
     'App\Controllers\CustomerController@addOrder'
 );
 $router->post(
-    '/order/destroy/(\d+)',
+    '/order/destroy',
     'App\Controllers\CustomerController@destroyOrder'
 );
 $router->get(
@@ -32,6 +32,10 @@ $router->get(
 $router->post(
     '/profile/update',
     'App\Controllers\CustomerController@updateProfile'
+);
+$router->post(
+    '/profile/change-password',
+    'App\Controllers\CustomerController@changePassword'
 );
 $router->get(
     '/order',

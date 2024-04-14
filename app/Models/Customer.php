@@ -47,6 +47,11 @@ class Customer{
     {
         return $this->customer_name;
     }
+    ## get gender
+    public function getGender(): string
+    {
+        return $this->customer_gender;
+    }
     ## get email
     public function getEmail(): string
     {
@@ -61,6 +66,11 @@ class Customer{
     public function getAddress(): string
     {
         return $this->customer_address;
+    }
+    ## get Password
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 
     ## get all customer
@@ -121,20 +131,36 @@ class Customer{
         return $this->username;
     }
     ## get all customer
-    public function update(): bool
+    ## update customer
+    public function update(array $data): bool
     {   
-     
-        $sql = "UPDATE customers SET customer_name = ?, customer_email = ?, customer_phone = ?, customer_gender = ?, customer_address = ?, username = ? WHERE customer_id = ?";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([$this->customer_name, $this->customer_email, $this->customer_phone, $this->customer_gender, $this->customer_address, $this->username, $this->customer_id]);
-    }
-    ## change password
-    public function changePassword(): bool
-    {   
+        try{
 
-        $sql = "UPDATE customers SET password = ? WHERE customer_id = ?";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([$this->password, $this->customer_id]);
+            $sql = "UPDATE customers SET customer_name = :customer_name, customer_email = :customer_email, customer_phone = :customer_phone, customer_gender = :customer_gender, customer_address = :customer_address WHERE username = :username";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':customer_name', $data['customer_name'], PDO::PARAM_STR);
+            $stmt->bindParam(':customer_email', $data['customer_email'], PDO::PARAM_STR);
+            $stmt->bindParam(':customer_phone', $data['customer_phone'], PDO::PARAM_STR);
+            $stmt->bindParam(':customer_gender', $data['customer_gender'], PDO::PARAM_INT);
+            $stmt->bindParam(':customer_address', $data['customer_address'], PDO::PARAM_STR);
+            $stmt->bindParam(':username', $this->username, PDO::PARAM_STR);
+            return $stmt->execute();
+        }
+        catch(PDOException $e){
+           ($e->getMessage());
+            return false;
+        }
     }
+        
+    ## change password
+    public function changePassword($data): bool
+    {   
+        $sql = "UPDATE customers SET password = :password WHERE username = :username";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':password', $data['password'], PDO::PARAM_STR);
+        $stmt->bindParam(':username', $this->username, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+    
 }
 

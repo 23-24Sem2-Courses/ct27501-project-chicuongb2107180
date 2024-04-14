@@ -113,9 +113,7 @@ class Product
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
-            var_dump($this);
             echo $e->getMessage();
-            die();
             return false;
         }
 
@@ -211,5 +209,24 @@ class Product
             });
         }
         return $Products;
+    }
+    ## search product
+    public  function search($search): array{
+        $Products= $this->all();
+        $result = [];
+        foreach($Products as $product){
+            $search = mb_strtoupper($search,'UTF-8');
+            $product_name = mb_strtoupper($product->getName(),'UTF-8');
+            if(strpos($product->getName(),$search) !== false){
+                $result[] = $product;
+            }
+        }
+        return $result;
+    }
+   
+    ## paginate
+    public static function paginate($offset, $limit,$products): array
+    {
+        return array_slice($products, $offset, $limit);
     }
 }
