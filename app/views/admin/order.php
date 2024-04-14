@@ -116,4 +116,5 @@ use App\utils\Helper;
         </ul>
     </nav>
 </div>
+</div>
     <?php require_once __DIR__ . '/partials/footer.php'; ?>

@@ -2,15 +2,11 @@
 
 Học kỳ 2, Năm học 2023-2024
 
-**MSSV 1** : 
+**MSSV 1** : B2107180
 
-**Họ tên SV 1**:
+**Họ tên SV 1**:Nguyễn Chí Cường
 
-**MSSV 2**:
+**Lớp học phần**:CT27501
 
-**Họ tên SV 2**:
-
-**Lớp học phần**:
-
-**Tên dự án**:
+**Tên dự án**:Trang web bán giày online
 

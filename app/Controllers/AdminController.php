@@ -96,7 +96,7 @@ class AdminController
             Helper::redirectTo('/admin/product', [
 
                 'status' => 'success',
-                'message' => 'Cập nhật sản phẩm thành công'
+                'message' => 'Thêm sản phẩm thành công'
 
             ]);
         }
